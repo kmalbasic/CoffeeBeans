@@ -35,6 +35,12 @@ the registry in this specific pattern:
 ```
 
 When we are done configuring and editing our registry keys, we just need our DLL and we are off to the tracks!
+This neat little party trick is fun since we are not running any programs/injectors that will always be flagged as viruses and
+blocked from running immediately, we are just letting Windows know that we have a trusted module that we want to load for "good monitoring purposes"
+and Windows calmly and most importantly does a quick **LoadLibrary** call and loads our DLL without any hesitation into all processes! Keep in mind
+that if your DLL is indeed malicious (unlike this quick POC), you will have to consider obfuscating a major part of the code and even signing it with
+a leaked (not blacklisted) digital certificate so you slide under the radar of any antivirus/endpoint protection software. If only **AppInit_DLLs** manually
+mapped the DLLs within processes...
 
 # Things to pay attention to when using AppInit_DLLs
 
